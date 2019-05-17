@@ -2,6 +2,6 @@ Rails.application.routes.draw do
 
 resources :seas
 
-# get '/seas/:id/destroy' => 'seas#destroy'
+get '/' => 'application#welcome'
 
 end

@@ -1,5 +1,5 @@
 class SeasController < ApplicationController
-  #define your controller actions here
+
   def index
     @seas = Sea.all
   end
