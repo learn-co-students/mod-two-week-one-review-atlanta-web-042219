@@ -1,6 +1,51 @@
 class SeasController < ApplicationController
   #define your controller actions here
 
+  def index 
+    @seas = Sea.all
+  end
+
+  def new 
+    @sea = Sea.new 
+  end
+
+  def create 
+   @sea = Sea.new(sea_params)
+   if @sea.valid?
+    @sea.save
+    redirect_to sea_path(@sea)
+   else 
+    render :new 
+   end
+   
+  end
+
+  def show
+    @sea = Sea.find(params[:id])
+  end
+
+  def edit
+    @sea = Sea.find(params[:id])
+  end
+
+  def update 
+    @sea = Sea.find(params[:id])
+    @sea.update(sea_params)
+    redirect_to sea_path(@sea)
+
+    # @sea = Sea.find(params[:id])
+    # if @sea.update(sea_params)
+    #  @sea.save
+    #  redirect_to sea_path(@sea)
+    # else 
+    #  render :new 
+    # end
+  end
+
+  def destroy
+    Sea.destroy(params[:id])
+    redirect_to '/seas'
+  end
 
   private
   # In controller actions, use this private method to access sea params from forms.
